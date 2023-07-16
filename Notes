@@ -1,0 +1,48 @@
+Data Summmarization:
+
+Extractive:
+
+. Easy to achieve
+. Less CPU consumption
+. NLTK library
+
+- doesnt value the importance of word
+
+Abstractive:
+
+- More CPU consumption
+- Transformers and Pipelines
+- important sentence
+
+
+Hugging face -> python -> html/css/js
+
+Transformer:
+encoder and decoder
+
+A transformer is an algorithm that can transform one DataFrame into another DataFrame
+
+Estimator:
+An estimator is an algorithm that can be fit on a datafrane to produce atransformer
+
+Pipeline: A pipeline chains multiple transformers and Estimators together to specify an ML workflow
+
+Hugging Face - Pipeline
+
+The pipelines are a great and easy way to use models for inference. these pipelines are objects that abstract most of the complex code from the library, offering a simple API dedicated to several tasks
+
+Training: process of creating ML algorithm
+
+Inference: Inference refers to the process of using trained ML algorithm to make a prediction
+
+virtual environment:
+when there is an upgrade in package. A playground where we find a space, other areas are not effected. the whole system does not get impacted
+
+Api token:
+randomly generated number
+
+requests: http
+
+render template
+
+backend to front we use jinja for flask {{}}

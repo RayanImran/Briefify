@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Summarization</title>
+
+    <!-- Include Tailwind CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-image: url("path/to/your/image.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .navbar {
+        background: linear-gradient(45deg, #ffc700, #ff0080, #00cfff, #ff0062);
+        background-size: 600% 600%;
+        animation: gradientAnimation 10s ease infinite;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .navbar-brand {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(45deg, #00cfff, #ff0062);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <nav class="navbar py-4">
+      <div class="container mx-auto">
+        <span class="navbar-brand text-3xl">Briefify</span>
+      </div>
+    </nav>
+
+    <div class="container mx-auto p-8">
+      <form action="{{url_for('Summarize')}}" method="post">
+        <textarea
+          name="data"
+          id=""
+          cols="30"
+          rows="10"
+          placeholder="Enter your Data"
+          required="required"
+          class="w-full p-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        ></textarea>
+        <input
+          type="range"
+          min="20"
+          max="1000"
+          name="maxL"
+          value="100"
+          class="w-full appearance-none bg-gray-300 h-1 rounded mt-4 focus:outline-none focus:bg-blue-500"
+          onchange="updateRangeValue(this.value)"
+          oninput="updateRangeValue(this.value)"
+        />
+        <div class="flex justify-between mt-2">
+          <span
+            id="minRange"
+            class="text-2xl text-gray-600 font-bold tracking-wide"
+          >
+            20
+          </span>
+          <span
+            id="maxRange"
+            class="text-2xl text-gray-600 font-bold tracking-wide"
+          >
+            100
+          </span>
+        </div>
+        <div class="flex justify-end space-x-4 mt-4">
+          <button
+            type="submit"
+            class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+          >
+            Clear
+          </button>
+          <button
+            type="submit"
+            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+
+      <h3
+        class="text-4xl font-extrabold mt-8 text-purple-600 border-b-4 border-purple-600 inline-block py-2 px-4 rounded"
+      >
+        Summarized Text
+      </h3>
+      <textarea
+        name="result"
+        cols="30"
+        rows="10"
+        class="w-full p-4 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+{{result}}</textarea
+      >
+    </div>
+
+    <script>
+      function updateRangeValue(value) {
+        document.getElementById("minRange").textContent = "20";
+        document.getElementById("maxRange").textContent = value;
+
+        // Get the input element and set its value
+        var rangeInput = document.querySelector('input[name="maxL"]');
+        rangeInput.value = value;
+      }
+    </script>
+  </body>
+</html>
