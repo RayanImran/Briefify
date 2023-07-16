@@ -1,5 +1,5 @@
 import requests
-from flask import Flask,render_template,url_for
+from flask import Flask, render_template, url_for
 from flask import request as req
 
 app = Flask(__name__)
@@ -14,7 +14,6 @@ def index():
 def Summarize():
     if req.method == "POST":
         API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
-        headers = {"Authorization": "Bearer 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"}
 
         data = req.form["data"]
 
@@ -22,8 +21,6 @@ def Summarize():
             response = requests.post(API_URL, headers=headers, json=payload)
             return response.json()
 
-
-        
         maximumLength = int(req.form["maxL"])
         minimumLength = maximumLength//4
         output = query({
@@ -35,6 +32,7 @@ def Summarize():
 
     else:
         return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.debug = True
