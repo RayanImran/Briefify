@@ -1,3 +1,4 @@
+import config
 import requests
 from flask import Flask, render_template, url_for
 from flask import request as req
@@ -15,7 +16,7 @@ def Summarize():
     if req.method == "POST":
         API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
         headers = {
-            "Authorization": "Bearer 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"}
+            'Authorization': 'Bearer ' + config.SECRET_KEY}
 
         data = req.form["data"]
 
